@@ -224,33 +224,11 @@ async def stat(modifier=None):
       
 @client.command(brief="Roll all your stats")
 async def stats():
-    rolls = []
-
-    for i in range(4):
-        rolls.append(randrange(1,6))
-        rolls.sort()
-        variabel1 = sum(rolls[-3:])
-    for i in range(4):
-        rolls.append(randrange(1,6))
-        rolls.sort()
-        variabel2 = sum(rolls[-3:])
-    for i in range(4):
-        rolls.append(randrange(1,6))
-        rolls.sort()
-        variabel3 = sum(rolls[-3:])
-    for i in range(4):
-        rolls.append(randrange(1,6))
-        rolls.sort()
-        variabel4 = sum(rolls[-3:])        
-    for i in range(4):
-        rolls.append(randrange(1,6))
-        rolls.sort()
-        variabel5 = sum(rolls[-3:])
-    for i in range(4):
-        rolls.append(randrange(1,6))
-        rolls.sort()
-        variabel6 = sum(rolls[-3:])    
-    await client.say(variabel1, variabel2, variabel3, variabel4, variabel5, variabel6)
+    def stat():
+        rolls = [randint(1, 6) for _ in range(4)]
+        return rolls-min(rolls)
+    rolls = [stat() for _ in range(6)]
+    await client.say("you rolled "+", and".join(rolls))
         
                                  
 async def list_servers():
